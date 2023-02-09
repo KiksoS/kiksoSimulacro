@@ -3,16 +3,15 @@
 aprobado=0
 suspendido=0
 
-for i in $(cut -f3 notas.txt);do
+for i in `cat notas.txt | awk '{print $3}'`;do
 
-    if [ $i -ge 5 ];then
+    if [ $((i)) -ge 5 ];then
 
-        $((aprobado++))
+        ((aprobado++))
 
     else
 
-        $((suspendido++))
+        ((suspendido++))
     fi
-
 done 
 echo "Hay $aprobado aprobados y $suspendido suspendidos "
